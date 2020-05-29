@@ -66,6 +66,7 @@ class FcmPusher
           badge: options[:badge],
           sound: options[:sound]
         },
+        data: options[:data],
         priority: options[:priority]
       }.to_json
     end
@@ -84,6 +85,7 @@ class FcmPusher
           badge: options[:badge],
           sound: options[:sound]
         },
+        data: options[:data],
         priority: options[:priority]
       }.to_json
     end
