@@ -23,6 +23,17 @@ class FcmPusher
     @priority = FcmPusher::Priority::HIGH
   end
 
+  # send data with no notification, bc backgrounded
+  # apps wont fire setBackgroundMessageHandler on ios/android
+  def send_data(to, data = {})
+    @fcm_token = to
+    body = {
+      to: to,
+      data: data,
+    }.to_json
+    request(Configuration::FCM_BASE_URL, @fcm_api_key, body)
+  end
+
   # send notification to a unique registered token
   # optional parameters are icon, badge, sound and priority
   def send_once(to, title, body, options = {})
